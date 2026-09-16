@@ -68,8 +68,8 @@ O sistema será dividido entre um serviço principal (Kotlin/Ktor) e um microsse
 
 ---
 
-## 8. Coorte de apresentação
+## 8. Coorte de apresentação e integração com outra disciplina
 
-**Coorte:** [Inserir Coorte A, B, etc., ou formato da apresentação]
+**Coorte:b**, apresentações online.
 
-Não há integração com outra disciplina neste semestre.
+há integração com outra disciplina neste semestre: (PROCESSOS DE SOFTWARE e DESENVOLVIMENTO DE SISTEMAS WEB II)
