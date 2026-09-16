@@ -1,12 +1,12 @@
 # Replay
 
-Replay é uma plataforma focada no nicho de colecionadores e entusiastas, conectando pessoas localmente para facilitar a troca, compra e venda de mídias físicas, como CDs e DVDs.
+O **Replay** é uma plataforma focada no nicho de colecionadores e entusiastas, conectando pessoas localmente para facilitar a troca, compra e venda de mídias físicas, como CDs e DVDs.
 
 ## Equipe
 * **Vinícius Daniel Pires Thome** - Matrícula: 20230037303
 * **Pedro Vitor de Oliveira Moura** - Matrícula: 20230036093
 
-**Coorte:** [Inserir a sua Coorte, ex: Coorte 1]
+**Coorte:** [Inserir a sua Coorte]
 
 ## Apresentação (Sprint 0)
 * **Vídeo de Apresentação:** [Link do vídeo no YouTube/Drive aqui]
@@ -27,7 +27,7 @@ Para rodar este projeto, você precisará ter instalado na sua máquina:
 * [Mise] (para gerenciamento de ferramentas e tasks)
 * [Docker e Docker Compose] (para os serviços dependentes)
 * Java 21+ e Go 1.22+ (podem ser gerenciados pelo Mise)
-* 
+
 ## Comandos Principais (Mise Tasks)
 
 O projeto utiliza o arquivo `mise.toml` na raiz para padronizar a execução de tarefas. 
