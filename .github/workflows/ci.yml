@@ -1,0 +1,27 @@
+name: CI Pipeline - Replay
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build and Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Configurar o Mise
+        uses: jdx/mise-action@v2
+        
+      - name: Dar permissão de execução ao Gradle
+        run: chmod +x api-ktor/gradlew
+
+      - name: Compilar os projetos (Build)
+        run: mise run build

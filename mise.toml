@@ -1,0 +1,17 @@
+[tools]
+java = "21"
+go = "1.22"
+
+[tasks.build]
+description = "Compila o serviço principal em Kotlin e o microsserviço em Go"
+run = """
+cd api-ktor && ./gradlew build -x test
+cd ../services && go build ./...
+"""
+
+[tasks.test]
+description = "Roda os testes automatizados"
+run = """
+cd api-ktor && ./gradlew test
+cd ../services && go test ./...
+"""
