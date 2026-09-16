@@ -33,7 +33,7 @@ Nosso produto é focado exclusivamente no nicho de entretenimento físico, conec
 
 ## 3. Backlog inicial
 
-O backlog está no quadro do GitHub Projects deste repositório: [Inserir o link do seu GitHub Projects aqui]
+O backlog está no quadro do GitHub Projects deste repositório: [https://github.com/users/vinippires/projects/1/views/1]
 
 ---
 
@@ -69,8 +69,6 @@ O domínio do sistema é relacional (usuários têm muitos anúncios, anúncios 
 | :--- | :--- | :--- |
 | Vinícius Daniel Pires Thome | 20230037303 | Desenvolvimento Backend (Kotlin/Go) |
 | Pedro Vitor de Oliveira Moura | 20230036093 | Desenvolvimento Backend (Kotlin/Go) |
-
-*(Nota: Ajustem os papéis se houver divisão de front-end/back-end entre vocês)*
 
 ---
 
