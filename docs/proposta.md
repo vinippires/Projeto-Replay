@@ -1,6 +1,6 @@
 # Proposta do produto — Replay
 
-**Disciplina:** DIM0547 — Programação Back-end
+**Disciplina:** DIM0547 — DESENVOLVIMENTO DE SISTEMAS WEB II
 **Semestre:** 2026.2
 **Repositório:** [https://github.com/vinippires/Projeto-Replay/tree/main]
 
@@ -37,33 +37,29 @@ O backlog está no quadro do GitHub Projects deste repositório: [https://github
 
 ---
 
-## 4. Plataforma-alvo
+## 4. Entidades principais do domínio
+Com base no MVP definido, o domínio do sistema gira em torno das seguintes entidades principais:
 
-**Escolha: Web (Navegador).**
-
-O produto é voltado para a exibição de um catálogo de mídias e gerenciamento de acervo pessoal. A escolha pela Web permite que qualquer usuário acesse a plataforma instantaneamente de um computador ou celular, sem a barreira de entrada de precisar baixar e instalar um aplicativo apenas para anunciar ou buscar um disco específico. 
-
-**Alternativa descartada: Aplicativo Mobile Nativo (Android/iOS).**
-
-Exigiria o desenvolvimento de duas bases de código distintas (ou uso de frameworks híbridos complexos) e passaria por processos de aprovação em lojas de aplicativos. Para um MVP de marketplace de nicho, o atrito de instalação não compensa o ganho de funcionalidades nativas (como GPS contínuo ou câmera nativa), já que o upload de fotos via navegador atende perfeitamente à necessidade.
+* **Usuário:** Responsável pelo cadastro na plataforma, gerenciamento do seu acervo pessoal e interação com outros colecionadores.
+* **Anúncio:** Representa os CDs e DVDs cadastrados, contendo os dados do produto (título, estado de conservação, fotos).
+* **Mensagem:** Responsável por registrar a comunicação em tempo real entre o usuário interessado e o dono do anúncio para a negociação.
 
 ---
 
-## 5. Estratégia de backend
-
-**Escolha: Kotlin com Ktor (Serviço Principal) e Go (Microsserviço).**
-
-O domínio do sistema é relacional (usuários têm muitos anúncios, anúncios geram mensagens). O Kotlin com Ktor foi escolhido para a API principal por ser leve, moderno e lidar de forma assíncrona com o alto volume de requisições do catálogo de mídias, garantindo produtividade e segurança de tipos (null-safety). Em paralelo, um microsserviço em Go será responsável exclusivamente pelo Chat (WebSockets), isolando a carga de I/O concorrente do serviço principal.
-
-**Alternativas descartadas.**
-
-**Java com Quarkus:** Embora seja uma excelente opção madura, foi descartada porque a equipe preferiu a sintaxe menos verbosa e os recursos modernos da linguagem Kotlin (como coroutines) para acelerar o desenvolvimento do MVP.
-
-**Monolito Único:** Manter o serviço de chat (mensageria em tempo real) acoplado ao CRUD principal de mídias no mesmo servidor poderia gerar gargalos de performance e consumo excessivo de memória, prejudicando a navegação no catálogo.
+## 5. Decisão: Kotlin/Ktor ou Java/Quarkus
+**Decisão:** Kotlin/Ktor
+A escolha se justifica pela preferência da equipe por uma sintaxe menos verbosa, a garantia de segurança de tipos (null-safety) e o uso de recursos modernos da linguagem, como coroutines. O Ktor, sendo leve, nos dá a flexibilidade e a produtividade necessárias para acelerar o desenvolvimento do MVP e lidar de forma eficiente e assíncrona com as requisições do catálogo de mídias.
 
 ---
 
-## 6. Equipe
+## 6. Divisão de responsabilidades entre o serviço principal e Go
+O sistema será dividido entre um serviço principal (Kotlin/Ktor) e um microsserviço dedicado (Go):
+* **Serviço Principal (Kotlin/Ktor):** Ficará responsável pelo domínio relacional (CRUD), como gerenciamento de usuários, autenticação e gerenciamento do catálogo de anúncios de mídias.
+* * **Microsserviço (Go):** Será responsável exclusivamente pelo Chat (WebSockets) e mensageria em tempo real.
+
+---
+
+## 7. Equipe
 
 | Nome | Matrícula | Papel |
 | :--- | :--- | :--- |
@@ -72,7 +68,7 @@ O domínio do sistema é relacional (usuários têm muitos anúncios, anúncios 
 
 ---
 
-## 7. Coorte de apresentação e integração com outra disciplina
+## 8. Coorte de apresentação
 
 **Coorte:** [Inserir Coorte A, B, etc., ou formato da apresentação]
 
