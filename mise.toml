@@ -1,17 +1,28 @@
-[tools]
-java = "21"
-go = "1.22"
+[env]
+# Aqui você pode definir variáveis de ambiente, se precisar depois
 
 [tasks.build]
-description = "Compila o serviço principal em Kotlin e o microsserviço em Go"
+description = "Compila o serviço principal (Kotlin) e o microsserviço (Go)"
 run = """
+#!/bin/bash
+echo "Compilando o Kotlin/Ktor..."
 cd api-ktor && ./gradlew build -x test
-cd ../services && go build ./...
+
+echo "Compilando o Go..."
+# Descomente e ajuste a linha abaixo quando criar a pasta do Go
+# cd api && go build -o bin/app
+echo "Build concluído!"
 """
 
 [tasks.test]
-description = "Roda os testes automatizados"
+description = "Roda a suíte de testes de todos os projetos"
 run = """
+#!/bin/bash
+echo "Rodando testes do Kotlin/Ktor..."
 cd api-ktor && ./gradlew test
-cd ../services && go test ./...
+
+echo "Rodando testes do Go..."
+# Descomente e ajuste a linha abaixo quando criar a pasta do Go
+# cd api && go test ./...
+echo "Testes concluídos!"
 """
