@@ -8,12 +8,8 @@
 
 ## 1. Visão do produto
 
-Para colecionadores, cinéfilos e amantes de música
-Que possuem CDs e DVDs parados em casa ou buscam itens específicos para suas coleções
-O Replay é uma plataforma web de troca e compra de mídias físicas
-Que permite cadastrar o acervo pessoal, buscar obras e negociar diretamente com outros usuários
-Diferente de marketplaces genéricos ou de sebos físicos tradicionais
-Nosso produto é focado exclusivamente no nicho de entretenimento físico, conectando pessoas localmente com um chat em tempo real para fechar negócio.
+Para colecionadores, cinéfilos e amantes de música que possuem CDs e DVDs parados em casa ou buscam itens específicos para suas coleções.  O Replay é uma plataforma web de troca e compra de mídias físicas que permite cadastrar o acervo pessoal, buscar obras e negociar diretamente com outros usuários. 
+Diferente de marketplaces genéricos ou de sebos físicos tradicionais, nosso produto é focado exclusivamente no nicho de entretenimento físico, conectando pessoas localmente com um chat em tempo real para fechar negócio.
 
 ---
 
@@ -26,8 +22,6 @@ Nosso produto é focado exclusivamente no nicho de entretenimento físico, conec
 | Busca no catálogo por título, artista/diretor ou formato | Player de reprodução de mídia ou prévias de áudio |
 | Chat interno (mensageria em tempo real) para negociação | Sistema complexo de recomendações por IA |
 | Atualização de status do anúncio (disponível/negociado) | Painel administrativo avançado para moderação |
-
-**Hipótese de valor:** acreditamos que entusiastas e colecionadores vão cadastrar seus CDs e DVDs não utilizados na plataforma, em vez de deixá-los pegando pó na estante, porque desejam renovar seus acervos e adquirir novos itens sem gastar o valor de um produto lacrado em loja.
 
 ---
 
@@ -48,7 +42,8 @@ Com base no MVP definido, o domínio do sistema gira em torno das seguintes enti
 
 ## 5. Decisão: Kotlin/Ktor ou Java/Quarkus
 **Decisão:** Kotlin/Ktor
-A escolha se justifica pela preferência da equipe por uma sintaxe menos verbosa, a garantia de segurança de tipos (null-safety) e o uso de recursos modernos da linguagem, como coroutines. O Ktor, sendo leve, nos dá a flexibilidade e a produtividade necessárias para acelerar o desenvolvimento do MVP e lidar de forma eficiente e assíncrona com as requisições do catálogo de mídias.
+
+Optamos por Kotlin com Ktor porque a equipe deseja explorar recursos modernos da linguagem e garantir maior robustez no código através da segurança de tipos (null-safety). O domínio do sistema exige lidar de forma assíncrona com as requisições do catálogo de mídias, e as corrotinas do Kotlin facilitam essa concorrência de maneira eficiente. Além disso, o Ktor ser mais leve e flexível nos proporciona a produtividade necessária para acelerar o desenvolvimento do nosso MVP.
 
 ---
 
@@ -63,8 +58,8 @@ O sistema será dividido entre um serviço principal (Kotlin/Ktor) e um microsse
 
 | Nome | Matrícula | Papel |
 | :--- | :--- | :--- |
-| Vinícius Daniel Pires Thome | 20230037303 | Desenvolvimento Backend (Kotlin/Go) |
-| Pedro Vitor de Oliveira Moura | 20230036093 | Desenvolvimento Backend (Kotlin/Go) |
+| Vinícius Daniel Pires Thome | 20230037303 | Desenvolvimento Fullstack (Kotlin/Go/HTML/JS) |
+| Pedro Vitor de Oliveira Moura | 20230036093 | Desenvolvimento Fullstack (Kotlin/Go/HTML/JS) |
 
 ---
 
