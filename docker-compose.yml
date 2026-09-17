@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  # 1. Banco de Dados PostgreSQL
+  db:
+    image: postgres:16
+    container_name: replay-db
+    environment:
+      POSTGRES_USER: replay_user
+      POSTGRES_PASSWORD: replay_password
+      POSTGRES_DB: replay_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  # 2. Serviço Principal (Kotlin/Ktor)
+  api-ktor:
+    build:
+      context: ./api-ktor
+      # dockerfile: Dockerfile (Você criará o Dockerfile do Ktor depois)
+    container_name: replay-api-ktor
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      - DB_URL=jdbc:postgresql://db:5432/replay_db
+      - DB_USER=replay_user
+      - DB_PASSWORD=replay_password
+
+  # 3. Microsserviço de Chat (Go)
+  chat-service:
+    build:
+      context: ./services
+      # dockerfile: Dockerfile (Você criará o Dockerfile do Go depois)
+    container_name: replay-chat-go
+    ports:
+      - "8081:8081"
+
+volumes:
+  pgdata:
