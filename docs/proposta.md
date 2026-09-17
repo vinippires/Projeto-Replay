@@ -50,7 +50,7 @@ Optamos por Kotlin com Ktor porque a equipe deseja explorar recursos modernos da
 ## 6. Divisão de responsabilidades entre o serviço principal e Go
 O sistema será dividido entre um serviço principal (Kotlin/Ktor) e um microsserviço dedicado (Go):
 * **Serviço Principal (Kotlin/Ktor):** Ficará responsável pelo domínio relacional (CRUD), como gerenciamento de usuários, autenticação e gerenciamento do catálogo de anúncios de mídias.
-* * **Microsserviço (Go):** Será responsável exclusivamente pelo Chat (WebSockets) e mensageria em tempo real.
+* **Microsserviço (Go):** Será responsável exclusivamente pelo Chat (WebSockets) e mensageria em tempo real.
 
 ---
 
