@@ -6,10 +6,10 @@ O **Replay** é uma plataforma focada no nicho de colecionadores e entusiastas, 
 * **Vinícius Daniel Pires Thome** - Matrícula: 20230037303
 * **Pedro Vitor de Oliveira Moura** - Matrícula: 20230036093
 
-**Coorte:** [Inserir a sua Coorte]
+**Coorte:** [b, apresentações online]
 
 ## Apresentação (Sprint 0)
-* **Vídeo de Apresentação:** [Link do vídeo no YouTube/Drive aqui]
+* **Vídeo de Apresentação:** [https://drive.google.com/file/d/11irgwcPDJ9cGOTLo1x2IQ1zPy8-ml4Hu/view?usp=sharing]
 * **Documento de Proposta:** (https://github.com/vinippires/Projeto-Replay/blob/main/docs/proposta.md)
 * **Backlog:** https://github.com/users/vinippires/projects/1/views/1
 
