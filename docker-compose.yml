@@ -1,42 +1,31 @@
-version: '3.8'
-
 services:
-  # 1. Banco de Dados PostgreSQL
   db:
     image: postgres:16
-    container_name: replay-db
     environment:
-      POSTGRES_USER: replay_user
-      POSTGRES_PASSWORD: replay_password
-      POSTGRES_DB: replay_db
+      POSTGRES_DB: ${DB_NAME:-replay}
+      POSTGRES_USER: ${DB_USER:-replay}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-replay}
     ports:
       - "5432:5432"
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - replay_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-replay} -d ${DB_NAME:-replay}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
 
-  # 2. Serviço Principal (Kotlin/Ktor)
-  api-ktor:
-    build:
-      context: ./api-ktor
-      # dockerfile: Dockerfile (Você criará o Dockerfile do Ktor depois)
-    container_name: replay-api-ktor
+  api:
+    build: ./api-ktor
+    environment:
+      DB_URL: jdbc:postgresql://db:5432/${DB_NAME:-replay}
+      DB_USER: ${DB_USER:-replay}
+      DB_PASSWORD: ${DB_PASSWORD:-replay}
     ports:
       - "8080:8080"
     depends_on:
-      - db
-    environment:
-      - DB_URL=jdbc:postgresql://db:5432/replay_db
-      - DB_USER=replay_user
-      - DB_PASSWORD=replay_password
-
-  # 3. Microsserviço de Chat (Go)
-  chat-service:
-    build:
-      context: ./services
-      # dockerfile: Dockerfile (Você criará o Dockerfile do Go depois)
-    container_name: replay-chat-go
-    ports:
-      - "8081:8081"
+      db:
+        condition: service_healthy
 
 volumes:
-  pgdata:
+  replay_pgdata:
