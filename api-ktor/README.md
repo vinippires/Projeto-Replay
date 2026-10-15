@@ -1,31 +1,40 @@
-# ktor-sample
+# api-ktor — serviço principal (Kotlin/Ktor)
 
-This project was created using the [Ktor Project Generator](https://start.ktor.io).
+CRUD de **Usuários** e **Anúncios** (1:N) do Replay. PostgreSQL + Flyway + Exposed.
 
-Here are some useful links to get you started:
- * [Ktor Documentation](https://ktor.io/docs/home.html)
- * [Ktor GitHub page](https://github.com/ktorio/ktor)
- * [Ktor Slack chat](https://app.slack.com/client/T09229ZC6/C0A974TJ9). [Request an invite](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up).
+## Subir
 
-
-## Features
-Here's a list of features included in this project:
-
-| Name | Description |
-|------|-------------|
-
-## Building & Running
-To build or run the project, use one of the following tasks:
-
-
-| Task | Description |
-|------|-------------|
-| `./gradlew test`    | Run the tests     |
-| `./gradlew build`   | Build the project |
-| `./gradlew run`     | Run the server    |
-
-If the server starts successfully, you'll see the following output:
+```bash
+docker compose up --build        # na raiz: Postgres + API
 ```
-2024-12-04 14:32:45.584 [main] INFO  Application - Application started in 0.303 seconds.
-2024-12-04 14:32:45.682 [main] INFO  Application - Responding at http://0.0.0.0:8080
+
+Só o banco (para rodar a API pelo Gradle):
+
+```bash
+docker compose up db -d
+cd api-ktor && ./gradlew run
 ```
+
+- Swagger UI: http://localhost:8080/swagger
+- OpenAPI (JSON): http://localhost:8080/api.json
+
+Variáveis de ambiente (padrões de desenvolvimento): `DB_URL`, `DB_USER`, `DB_PASSWORD`, `PORT`.
+
+## Camadas (`src/main/kotlin/replay`)
+
+| Pacote | Papel |
+|---|---|
+| `dominio` | Modelos, erros e interfaces de repositório. Sem framework. |
+| `casosdeuso` | Regras e validação. |
+| `adaptadores/banco` | Implementação dos repositórios (Exposed) e Flyway. |
+| `adaptadores/http` | Rotas Ktor, DTOs e erros em `application/problem+json`. |
+
+## Rotas
+
+| Método | Rota | Observação |
+|---|---|---|
+| GET/POST | `/usuarios` | `?pagina&tamanho&cidade` |
+| GET/PUT/DELETE | `/usuarios/{id}` | |
+| GET/POST | `/usuarios/{id}/anuncios` | relacionamento 1:N |
+| GET/POST | `/anuncios` | `?pagina&tamanho&formato&status&titulo&usuarioId` |
+| GET/PUT/DELETE | `/anuncios/{id}` | |

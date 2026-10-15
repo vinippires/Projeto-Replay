@@ -3,35 +3,49 @@
 O **Replay** é uma plataforma focada no nicho de colecionadores e entusiastas, conectando pessoas localmente para facilitar a troca, compra e venda de mídias físicas, como CDs e DVDs.
 
 ## Equipe
-* **Vinícius Daniel Pires Thome** - Matrícula: 20230037303
-* **Pedro Vitor de Oliveira Moura** - Matrícula: 20230036093
 
-**Coorte:** [b, apresentações online]
+- **Vinícius Daniel Pires Thome** - Matrícula: 20230037303
+- **Pedro Vitor de Oliveira Moura** - Matrícula: 20230036093
 
-## Apresentação (Sprint 0)
-* **Vídeo de Apresentação:** [https://drive.google.com/file/d/11irgwcPDJ9cGOTLo1x2IQ1zPy8-ml4Hu/view?usp=sharing]
-* **Documento de Proposta:** (https://github.com/vinippires/Projeto-Replay/blob/main/docs/proposta.md)
-* **Backlog:** https://github.com/users/vinippires/projects/1/views/1
+**Coorte:** b, apresentações online
 
-## Estrutura do Repositório
+## Entregas
 
-Conforme a arquitetura de referência, o repositório está dividido em:
+- **Sprint 0** — Vídeo: https://drive.google.com/file/d/11irgwcPDJ9cGOTLo1x2IQ1zPy8-ml4Hu/view?usp=sharing · Proposta: [docs/proposta.md](docs/proposta.md)
+- **Sprint 1** — Vídeo: _(colar o link aqui)_
+- **Backlog:** https://github.com/users/vinippires/projects/1/views/1
 
-* `api/` - Contém o microsserviço de mensageria (Go).
-* `services/` - Contém o serviço principal da aplicação (Java/Quarkus).
-* `protos/` - Contém as definições de contratos/buffers (se aplicável).
-* `docs/` - Contém a documentação do projeto, incluindo a `proposta.md`.
+## Estrutura do repositório
 
-## Como Rodar Localmente
-Para rodar este projeto, você precisará ter instalado na sua máquina:
-* [Mise] (para gerenciamento de ferramentas e tasks)
-* [Docker e Docker Compose] (para os serviços dependentes)
-* Java 21+ e Go 1.22+ (podem ser gerenciados pelo Mise)
+- `api-ktor/` — serviço principal em **Kotlin/Ktor** (CRUD de usuários e anúncios, PostgreSQL, Flyway). Ver [api-ktor/README.md](api-ktor/README.md).
+- `services/` — microsserviço de chat em tempo real (**Go**, WebSockets), previsto para as próximas sprints.
+- `docs/` — documentação do projeto (`proposta.md`).
+- `docker-compose.yml` — PostgreSQL e API.
 
-## Comandos Principais (Mise Tasks)
+## Como rodar
 
-O projeto utiliza o arquivo `mise.toml` na raiz para padronizar a execução de tarefas. 
+Pré-requisitos: Docker e Docker Compose (Java 21 e Go podem ser gerenciados pelo [Mise](https://mise.jdx.dev)).
 
-1. **Para compilar os projetos (Serviço principal e microsserviço):**
-   ```bash
-   mise run build
+```bash
+docker compose up --build     # ou: mise run up
+```
+
+- **Swagger UI:** http://localhost:8080/swagger
+- **OpenAPI (JSON):** http://localhost:8080/api.json
+
+## Tasks do Mise
+
+```bash
+mise run build   # compila os projetos
+mise run up      # sobe banco + API com docker compose
+```
+
+## Sprint 1 — o que foi entregue
+
+- CRUD completo de `Usuario` e `Anuncio` (relação 1:N), com paginação e filtros feitos no SQL
+- Migrações versionadas com Flyway (`api-ktor/src/main/resources/db/migration`)
+- Arquitetura em camadas (domínio sem dependência de framework)
+- Validação de entradas e erros em *problem details* (RFC 9457)
+- OpenAPI gerado do código, com Swagger UI
+
+Os testes (unitários, integração e de arquitetura) ficam para a Sprint 2.
