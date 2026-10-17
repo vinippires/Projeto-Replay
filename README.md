@@ -12,7 +12,7 @@ O **Replay** é uma plataforma focada no nicho de colecionadores e entusiastas, 
 ## Entregas
 
 - **Sprint 0** — Vídeo: https://drive.google.com/file/d/11irgwcPDJ9cGOTLo1x2IQ1zPy8-ml4Hu/view?usp=sharing · Proposta: [docs/proposta.md](docs/proposta.md)
-- **Sprint 1** — Vídeo: _(colar o link aqui)_
+- **Sprint 1** — Vídeo: https://drive.google.com/file/d/1jHXerhGFnBM0f9DEbFxq6AOeTjAmySKe/view
 - **Backlog:** https://github.com/users/vinippires/projects/1/views/1
 
 ## Estrutura do repositório
